@@ -261,8 +261,8 @@ if __name__ == '__main__':
 
     # records = read_parse_to_class(r"C:\drob\sample_fordev.xlsx")
 
-    data_handler(r"C:\drob\sample_fordev.xlsx",
-                 r"C:\drob\upadted1.xlsx")
+    data_handler(r"C:\drob\sample_fordev_u.xlsx",
+                 r"C:\drob\upppadted1.xlsx")
 
     # print(records[0].brand)
     # print(records[0].original)

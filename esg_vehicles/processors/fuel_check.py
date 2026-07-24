@@ -106,7 +106,7 @@ def check_for_fuel(check_for_fuel:list):
 def check_for_fuel_rev(check_for_fuel:list):
     normalized_text = keywords_list_exraction_desc(check_for_fuel)
     full_text_string = " " + " ".join(normalized_text) + " "
-
+    #FIXME returns EV for any "electric" wording...
     if any(f" {keyword} " in full_text_string for keyword in ELECTRIC_KEYWORDS):
         return "ev"
     if any(f" {keyword} " in full_text_string for keyword in HYBRID_KEYWORDS):
