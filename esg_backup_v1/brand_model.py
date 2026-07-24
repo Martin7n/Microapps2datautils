@@ -1,4 +1,4 @@
-from esg_vehicles.data_id import BRAND_ALIASES, BADGE_PATTERN
+from esg_backup_v1.data_id import BRAND_ALIASES
 
 
 def norm(x):

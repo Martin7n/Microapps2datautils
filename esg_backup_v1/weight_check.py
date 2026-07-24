@@ -1,4 +1,4 @@
-from esg_vehicles.data_id import VEHICLE_WEIGHT_CLASSES
+from esg_backup_v1.data_id import VEHICLE_WEIGHT_CLASSES
 
 
 def weight_normalization(weight, unit):

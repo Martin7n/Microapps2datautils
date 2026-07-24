@@ -1,12 +1,10 @@
 import os
 import openpyxl
 
-from csv_eea_co.eaa_data_handler import field_list
-from esg_vehicles.main_esg import car_data, all_in_one, object_data_update
-from esg_vehicles.weight_check import classify_by_weight, weight_normalization
+from esg_backup_v1.main_esg import object_data_update
 
 
-def xls_parse_sample(file):
+def xls_parse_sample_test(file):
     wb = openpyxl.load_workbook(file)
     ws = wb.active
     interval = 10
@@ -44,10 +42,6 @@ def xls_parse_sample(file):
     return object_to_write
         # for k,v in x.items():
         #     print(f"{k}:{v}", end="\t")
-
-
-
-
 
 
 
@@ -97,4 +91,4 @@ def xls_writer(data):
 
 if __name__ == '__main__':
     # xls_parse_base(r"C:\drob\ress.xlsx")
-    xls_parse_sample(r"C:\drob\sample.xlsx")
+    xls_parse_sample_test(r"C:\drob\sample.xlsx")

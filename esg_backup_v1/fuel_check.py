@@ -1,7 +1,8 @@
-from esg_vehicles.data_id import DIESEL, PETROL, BADGE_PATTERN, FUEL_SIGNALS
 
 
 import re
+
+from esg_backup_v1.data_id import FUEL_SIGNALS
 
 
 def normalize(text):

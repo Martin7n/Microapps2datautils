@@ -582,8 +582,6 @@ ev_models = {
     for brand, models in ev_models.items()
 }
 
-if "model 3" in ev_models["tesla"]:
-    print("It's an EV!")
 
 # Iterate over all models
 # for brand, models in ev_models.items():

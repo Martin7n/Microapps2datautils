@@ -1,9 +1,8 @@
 import re
 
-from esg_vehicles.brand_model import brand_model_extraction
-from esg_vehicles.data_id import BADGE_PATTERN, BRAND_ALIASES
-from esg_vehicles.fuel_check import  classify_fuel
-from esg_vehicles.weight_check import weight_normalization, classify_by_weight
+from esg_backup_v1.brand_model import brand_model_extraction
+from esg_backup_v1.fuel_check import classify_fuel
+from esg_backup_v1.weight_check import weight_normalization, classify_by_weight
 
 
 def car_data(vin, model, brand, description, weight, measure_unit):
