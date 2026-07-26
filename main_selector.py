@@ -13,6 +13,6 @@ if __name__ == "__main__":
     source2 = r"C:\drob\testmask.xlsx"
     destination2 = r"C:\drob\resmask.xlsx"
     type = (input("Choose a type ['i' for datamask, 'e' for esg]"))
-    # transform_files(source,destination, type)
+    print(transform_files(source,destination, "esg_main"))
 
-    print(transform_files(source2, destination2, type))
+    # print(transform_files(source2, destination2, type))

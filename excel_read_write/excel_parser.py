@@ -98,7 +98,7 @@ def data_handler(filename, output_file, type_processing):
     if type_processing=="i":
         data_mask(records)
     elif type_processing=="esg_main":
-        process_records(records, type_processing)
+        process_records(records)
     else:
         return "\033[91m Aborted: specify type processing.\033[0m"
 
