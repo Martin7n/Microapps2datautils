@@ -100,11 +100,11 @@ def data_handler(filename, output_file, type_processing):
     elif type_processing=="esg_main":
         process_records(records, type_processing)
     else:
-        return "Aborted: specify type processing."
+        return "\033[91m Aborted: specify type processing.\033[0m"
 
     counter = write_records(output_file, records)
 
-    return f"{counter} written successfully!"
+    return f"\033[92m{counter} written successfully!\033[0m"
 
 
 

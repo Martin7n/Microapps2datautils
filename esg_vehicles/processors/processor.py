@@ -1,8 +1,7 @@
 from esg_vehicles.models.main_class import ESGRecord
-from esg_vehicles.processors.brand_extraction import test1
-from esg_vehicles.processors.brand_model import extract_brand, extract_model, brand_model
+from esg_vehicles.processors.brand_model import brand_model
 from esg_vehicles.processors.category_check import  category_handler
-from esg_vehicles.processors.fuel_check import check_for_fuel, check_for_fuel_rev
+from esg_vehicles.processors.fuel_check import  check_for_fuel_rev
 
 
 
