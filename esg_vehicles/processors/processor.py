@@ -6,7 +6,7 @@ from esg_vehicles.processors.fuel_check import check_for_fuel, check_for_fuel_re
 
 
 
-def process_records(records:list[ESGRecord], type_processing):
+def process_records(records:list[ESGRecord]):
     count = 0
     data_ex = {}
 

@@ -92,13 +92,15 @@ def write_records(filename, records):
 
     return a_counter_is_never_too_much
 
-def data_handler(filename, output_file, type_processing="esg_main"):
+def data_handler(filename, output_file, type_processing):
     records = read_parse_to_class(filename, type_processing)
 
-    if type_processing!="i":
-        data_mask(records, type_processing)
+    if type_processing=="i":
+        data_mask(records)
     elif type_processing=="esg_main":
         process_records(records, type_processing)
+    else:
+        return "Aborted: specify type processing."
 
     counter = write_records(output_file, records)
 

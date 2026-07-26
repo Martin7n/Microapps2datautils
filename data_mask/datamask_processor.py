@@ -17,8 +17,6 @@ def mask_egn(value: str, secret: str) -> str:
     if not value:
         return value
 
-    value = str(value)
-
     digest = hmac.new(
         secret.encode("utf-8"),
         value.encode("utf-8"),
@@ -39,27 +37,27 @@ def mask_egn(value: str, secret: str) -> str:
     return masked
 
 
-def data_mask(records:list[DATAMaskrecords], type_processing):
+def data_mask(records:list[DATAMaskrecords]):
     for record in records:
         for header, value in record.original.items():
             if value is None:
                 continue
             value = str(value)
-            if any(x in header.lower() for x in SKIP_FIELDS):
+            header_lower = header.strip().lower()
+            if any(x in  header_lower for x in SKIP_FIELDS):
                 continue
-            if any(x in header.lower() for x in NAME_FIELDS):
+            if any(x in header_lower for x in NAME_FIELDS):
                 #simplest one:
                 if len(value) >= 3:
                     masked_value = value[:2] + "".join(["*" for x in value[2:]])
                     record.original[header] = masked_value
                 else:
-                    record.original[header] = "".join(["*" for x in value])
+                    record.original[header] = "*" * len(value)
 
-            elif any(x in header.lower() for x in OTHER_S_FIELDS):
+            elif any(x in header_lower for x in OTHER_S_FIELDS):
                 record.original[header] = mask_egn(value,SECRET_KEY)
 
-
-    return ""
+    return records
 
 if __name__ == "__main__":
     pass
