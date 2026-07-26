@@ -22,30 +22,6 @@ def keywords_list_exraction_desc(text_list:list):
     return keyword_extract_list(combined_text)
 
 
-
-def prepare_excel_value(value):
-    if value is None:
-        return None
-
-    if isinstance(value, (datetime, date)):
-        return value
-
-    if isinstance(value, str):
-        value = value.strip()
-
-        try:
-            if value.isdigit():
-                return int(value)
-        except Exception:
-            pass
-
-        try:
-            return float(value)
-        except ValueError:
-            pass
-
-    return value
-
 if __name__ == "__main__":
     a = "Ford e Transit VAN"
     b = text_normalization(a)
