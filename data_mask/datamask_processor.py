@@ -4,7 +4,7 @@ import hashlib
 from dotenv import load_dotenv
 from data_mask.file_dataclass import DATAMaskrecords
 
-load_dotenv()
+
 
 HMAC_SECRET = os.environ["HMAC_SECRET_KEY"]
 SECRET_KEY = os.environ["SECRECY"]
