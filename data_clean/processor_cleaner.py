@@ -29,6 +29,7 @@ def process_records(records:list[RAWDATArecords]):
             record.updated_tdfuel = ""
             record.updated_tdfuelid = ""
 
+
         if record.emissions:
             record.updated_emissions= ""
 
