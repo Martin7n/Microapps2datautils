@@ -1,4 +1,5 @@
 
+
 VEHICLE_WEIGHT_CLASSES = {
     "motorcycle": (50, 500),
     "car": (800, 2500),
@@ -8,6 +9,8 @@ VEHICLE_WEIGHT_CLASSES = {
     "heavy_duty": (12000, 40000),  # heavy trucks, articulated tractors
     "extra_heavy": (40000, 90000)  # special trucks, dumpers, etc.
 }
+
+
 
 VEHICLE_CATEGORY_MAPPING = {
     "Motorcycle": ["L3e", "L4e", "L5e"],

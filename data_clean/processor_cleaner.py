@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from data_clean.raw_dataclass import RAWDATArecords
 from data_clean.vins import vin_check, reg_check
 from esg_backup_v1.weight_check import weight_normalization
+from esg_vehicles.data_collections.categories_vehicles import CATEGORIES_BY_SOURCE_BG
 from esg_vehicles.processors.category_check import category_handler
 
 
@@ -21,13 +22,15 @@ def process_records(records:list[RAWDATArecords]):
         record.updated_tdmeasure = "kg"
         record.updated_tdmeasureid = "1"
 
-        record.updated_tdfuel = ""
-        record.updated_tdfuelid = ""
+        if len(record.tdtype) > 2:
+            record.updated_tdtype = CATEGORIES_BY_SOURCE_BG[record.tdtype]
+            record.updated_tdtypeid = ""
+        if len(record.tdfuel) > 2:
+            record.updated_tdfuel = ""
+            record.updated_tdfuelid = ""
 
-        record.updated_tdtype = ""
-        record.updated_tdtypeid = ""
-
-        record.updated_emissions= ""
+        if record.emissions:
+            record.updated_emissions= ""
 
 if __name__ == "__main__":
     pass
