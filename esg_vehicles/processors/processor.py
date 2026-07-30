@@ -23,8 +23,8 @@ def process_records(records:list[ESGRecord]):
             if new_model:
                 record.detected_model = new_model
         else:
-            record.detected_brand = BRANDS_ENG[record.brand]
-            record.detected_model = MODELS_ENG[record.model]
+            record.detected_brand = BRANDS_ENG.get(record.brand, record.brand)
+            record.detected_model = MODELS_ENG.get(record.model, record.model)
 
         current_fuel_equipment = [record.fuel_type, record.equipment]
         updated_fuel_cat = check_for_fuel_rev(current_fuel_equipment)
