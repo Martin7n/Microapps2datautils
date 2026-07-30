@@ -15,6 +15,7 @@ def category_handler(record: ESGRecord):
     eq_description = text_normalization(record.equipment)
     eq_weight = record.weight
     eq_weight_measure = record.weight_measure
+    eq_seats = record.seats
 
     updated_weight = weight_normalization(eq_weight, eq_weight_measure)
     updated_measure = "kg"

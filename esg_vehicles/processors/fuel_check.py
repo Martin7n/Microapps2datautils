@@ -1,8 +1,9 @@
 from esg_vehicles.data_collections.data_id2 import ELECTRIC_VINS
 from esg_vehicles.data_collections.fuels_propulsions.ev import ELECTRIC_KEYWORDS
-from esg_vehicles.data_collections.fuels_propulsions.fuel_propulsion import HYBRID_KWORDS, TECHNOLOGY_FUEL_MAP, BEV_MODELS, HYBRID_MODELS, \
-    FUEL_SIGNALS,  PETROL_KEYWORDS, GAS_KEYWORDS, \
-    DIESEL_KEYWORDS, HYBRID_KEYWORDS
+from esg_vehicles.data_collections.fuels_propulsions.fuel_propulsion import HYBRID_KWORDS, TECHNOLOGY_FUEL_MAP, \
+    BEV_MODELS, HYBRID_MODELS, \
+    FUEL_SIGNALS, PETROL_KEYWORDS, GAS_KEYWORDS, \
+    DIESEL_KEYWORDS, HYBRID_KEYWORDS, FUEL_ID
 from esg_vehicles.processors.data_helpers import keywords_list_exraction_desc
 
 
@@ -104,6 +105,10 @@ def check_for_fuel(check_for_fuel:list):
 
 
 def check_for_fuel_rev(check_for_fuel:list):
+
+    if check_for_fuel[0] in FUEL_ID:
+        return FUEL_ID[check_for_fuel[0]]
+
     normalized_text = keywords_list_exraction_desc(check_for_fuel)
     full_text_string = " " + " ".join(normalized_text) + " "
     #FIXME returns EV for any "electric" wording..

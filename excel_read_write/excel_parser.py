@@ -2,7 +2,6 @@ from datetime import datetime, date
 from openpyxl.reader.excel import load_workbook
 from openpyxl.workbook import Workbook
 
-from data_mask.file_dataclass import DATAMaskrecords
 from data_mask.datamask_processor import data_mask
 from esg_vehicles.data_collections.headers_fields import HEADER_MAP, OUTPUT_FIELDS
 from esg_vehicles.processors.processor import process_records
