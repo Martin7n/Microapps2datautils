@@ -9,7 +9,9 @@ ELECTRIC_KEYWORDS = {
 
     # 3. Specific Model Formats (Safely Hardened Against Hybrids)
     'byd seal ev', 'sealion 7', 'lucid air', 'model 3', 'model y', 'model s',
-    'model x', 'cybertruck', 'semi', 'roadster', 'f-150 lightning',
+    'model x', 'cybertruck', 'semi',
+    # 'roadster',
+    'f-150 lightning',
 
     # 4. Global Pure EV Production Models (Numeric & Alphanumeric)
     'atto 3', 'dolphin', 'seagull', '009', 'p7', 'g6', 'g9',

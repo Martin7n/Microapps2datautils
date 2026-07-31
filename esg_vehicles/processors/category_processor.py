@@ -58,6 +58,7 @@ def category_extraction(eq_description,eq_brand,eq_model,eq_vin):
     if len(eq_vin)>5:
         cat = category_by_vin(eq_vin)
         return cat
+    # check also TRUCK_MODELS
 
     return None
 

@@ -6,25 +6,25 @@ Todo:
 
     
     A) Brand - Models:
-        1. extract B&M from brand and model fields (EqAlloc)
-        2. extract B&M from brand and model fields (Equipment(description))
-        3. extract matched B&M by description
+        [] 1. extract B&M from brand and model fields (EqAlloc)
+        [] 2. extract B&M from brand and model fields (Equipment(description))
+        [] 3. extract matched B&M by description
         *** bonus: brand origin / country
         Result: B&M + modification data & id "tokens"
     B) Types/Categories: 
-        [x]1. extract labeled category by equipment type(EqAlloc) *** partial match of types.
-        [x]2. extract keyword category by description field (kw extract)
-        [x]3. if exist: extract weight and measuring units && normalize it.
-        [x]4. extract similarities based on VIN and mark/model
+        [x] 1. extract labeled category by equipment type(EqAlloc) *** partial match of types.
+        [x] 2. extract keyword category by description field (kw extract)
+        [x] 3. if exist: extract weight and measuring units && normalize it.
+        [x] 4. extract similarities based on VIN and mark/model
         Result:
         [best case: B1 & A1 steps results combined with 3rd block are final ] 
         Fail-safe: 1st step results into Category, buildup with 4th block results.   
     
     C) Fuels-Propulsion (FP)
-        1. extract and map by EquipAlloc field /if exists
-        2. match with Brand & Model(A) - only EV -> to result. 
-        3. extract by Equipment field(description)
-        4. extract by VIN
+        [x] 1. extract and map by EquipAlloc field /if exists
+        []  2. match with Brand & Model(A) - only EV -> to result. 
+        []  3. extract by Equipment field(description)
+        []  4. extract by VIN
         [fail-safe] by 4.
         Result: fuel/propulsion 
     D) Emission 
