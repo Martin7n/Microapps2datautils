@@ -25,6 +25,7 @@ class ESGRecord:
     weight: float | None = None
     weight_measure: str | None = None
     seats: int | None = None
+    type_vehicle: int | None = None
     axles: int | None = None
     emissions: float | None = None
     fuel_type: str | None = None
@@ -38,6 +39,7 @@ class ESGRecord:
     detected_seats : int | None = None
     detected_weight : str | None = None
     weight_measure_update : str | None = None
+    reg_category : str | None = None
     detected_emissions : float | None = None
     detected_fuel : str | None = None
     green : str | None = None
@@ -47,3 +49,4 @@ class ESGRecord:
     confidence: float = 0.0
 
     errors: list[str] = field(default_factory=list)
+

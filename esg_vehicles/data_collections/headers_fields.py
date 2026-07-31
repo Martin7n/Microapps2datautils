@@ -19,6 +19,7 @@ HEADER_MAP = {
     "Number of axes": "axles",
     "Emissions": "emissions",
     "Type of fuel": "fuel_type",
+
 }
 
 

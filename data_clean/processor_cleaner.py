@@ -7,7 +7,7 @@ from data_clean.raw_dataclass import RAWDATArecords
 from data_clean.vins import vin_check, reg_check
 from esg_backup_v1.weight_check import weight_normalization
 from esg_vehicles.data_collections.categories_vehicles import CATEGORIES_BY_SOURCE_BG
-from esg_vehicles.processors.category_check import category_handler
+from esg_vehicles.processors.category_processor import category_handler
 
 
 def process_records(records:list[RAWDATArecords]):

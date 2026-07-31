@@ -1,6 +1,10 @@
 from datetime import datetime, date
 import re
 
+
+def norm(x):
+    return (str(x) or "").lower()
+
 def text_normalization(text):
     return (str(text).strip() or "").lower()
 

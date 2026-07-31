@@ -21,6 +21,7 @@ VEHICLE_CATEGORY_MAPPING = {
     "HvyDutyTruck": ["N3"],
 }
 
+
 VEHICLE_CATEGORY_MAPPING =  {
     k.lower(): v
     for k, v in VEHICLE_CATEGORY_MAPPING.items()
@@ -45,13 +46,13 @@ V_W_CAT = VEHICLE_CATEGORIES = {
 
 
 MAIN_CATEGORIES = {
-"Motorcycle",
-"Car",
-"LgtComrclVeh",
-"Trailer",
-"MedDutyTruck",
-"HvyDutyTruck",
-"Other"
+"Motorcycle":"Motorcycle",
+"Car":"Car",
+"LgtComrclVeh":"LgtComrclVeh",
+"Trailer":"Trailer",
+"MedDutyTruck":"MedDutyTruck",
+"HvyDutyTruck":"HvyDutyTruck",
+"Other":"Other"
     }
 
 

@@ -1,13 +1,10 @@
 from esg_vehicles.data_collections.brand_models import SORTED_BRAND_LOOKUP, BRAND_ALIASES
 from esg_vehicles.models.main_class import ESGRecord
-from esg_vehicles.processors.data_helpers import keyword_extract_list, text_normalization, keywords_list_exraction_desc
+from esg_vehicles.processors.data_helpers import keyword_extract_list, text_normalization, keywords_list_exraction_desc, \
+    norm
 
-
-def norm(x):
-    return (str(x) or "").lower()
 
 def extract_brand(description_brand_model:list):
-
 
     # strongest signal first
     normalized_text = keywords_list_exraction_desc(description_brand_model)
@@ -28,6 +25,8 @@ def extract_brand(description_brand_model:list):
 
     # print(normalized_text)
     return None
+
+
 
 def extract_model(text, brand):
     if not brand:
@@ -91,5 +90,3 @@ if __name__ == '__main__':
     model = "A4 2.0 TDI quattro"
     description = "Audi A4 2.0 TDI quattro"
 
-    # print(extract_brand([brand, model, description]))
-    print(extract_model(description, brand))

@@ -1,10 +1,10 @@
 from esg_vehicles.data_collections.data_id2 import LCV_VIN, HGV_VIN, CAR_VIN, MEDDUTYTRUCK
 from esg_vehicles.data_collections.categories_vehicles import CATEGORIES_BY_SOURCE, MAIN_CATEGORIES, \
-    VEHICLE_WEIGHT_CLASSES
+    VEHICLE_WEIGHT_CLASSES, V_W_CAT
 from esg_vehicles.processors.data_helpers import text_normalization, keyword_extract_list
 
 from esg_vehicles.models.main_class import ESGRecord
-from esg_vehicles.processors.weight_check import weight_normalization
+from esg_vehicles.processors.weight_processor import weight_normalization
 
 
 #1st stage
@@ -20,18 +20,19 @@ def category_handler(record: ESGRecord):
     updated_weight = weight_normalization(eq_weight, eq_weight_measure)
     updated_measure = "kg"
 
+    return updated_weight, updated_measure
 
-    category_by_type =  category_check_by_type_search(eq_type)
-    # FIXME Dict for update: category_by_type = category_check_by_type_id_match(eq_type)
-    category_by_description =  category_check_by_type_search(eq_description)
-    category_by_weight_class = classify_by_weight(updated_weight)
-    if eq_vin and eq_vin!="-":
-        category_by_vin = check_by_partial_vin(eq_vin)
-
-    #FIXME - eq_type column is currently off.
-
-    # check_by_exact_type = ""
-    # if eq_type is not None or eq_type!="-":
+    # category_by_type =  category_check_by_type_search(eq_type)
+    # # FIXME Dict for update: category_by_type = category_check_by_type_id_match(eq_type)
+    # category_by_description =  category_check_by_type_search(eq_description)
+    # category_by_weight_class = classify_by_weight(updated_weight)
+    # if eq_vin and eq_vin!="-":
+    #     category_by_vin = check_by_partial_vin(eq_vin)
+    #
+    # #FIXME - eq_type column is currently off.
+    #
+    # # check_by_exact_type = ""
+    # # if eq_type is not None or eq_type!="-":
     #     check_by_exact_type = category_check_by_type_id_match(eq_type)
     # if eq_weight is not None or eq_weight!="-":
     #     weight = weight_normalization(eq_weight, eq_weight_measure)
@@ -55,7 +56,7 @@ def category_check_by_type_search(eq_type):
     if "СЂРµРјР°СЂРєРµ" in category_text:
         return MAIN_CATEGORIES["Trailer"]
     if "semi truck" in category_text:
-        return MAIN_CATEGORIES["HvyDutyTruk"]
+        return MAIN_CATEGORIES["HvyDutyTruck"]
 
 #2nd stage
 def classify_by_weight(weight):
@@ -84,11 +85,11 @@ def check_by_partial_vin(safe_vin):
     if vin_partial in LCV_VIN:
         return "LgtComrclVeh"
     if vin_partial in HGV_VIN:
-        return "HvyDutyTruk"
+        return "HvyDutyTruck"
     if vin_partial in CAR_VIN:
         return "Car"
     if vin_partial in MEDDUTYTRUCK:
-        return "MedDutyTruk"
+        return "MedDutyTruck"
     return ""
 
 def check_by_category(text, vehicle_type):
@@ -101,7 +102,7 @@ def check_by_category(text, vehicle_type):
     if "СЂРµРјР°СЂРєРµ" in vehicle_type.lower():
         return "Trailer"
     if "semi truck" in vehicle_type.lower():
-        return "HvyDutyTruk"
+        return "HvyDutyTruck"
     #None or NoCat
     return "NoCat"
 
