@@ -38,6 +38,7 @@ class ESGRecord:
     detected_category : str | None = None
     detected_seats : int | None = None
     detected_weight : str | None = None
+    detected_vin : str | None = None
     weight_measure_update : str | None = None
     reg_category : str | None = None
     detected_emissions : float | None = None

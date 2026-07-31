@@ -11,7 +11,7 @@ HEADER_MAP = {
     "equipmentAllocationID": "equipment_allocation_id",
     "Model of equipment": "model",
     "Equipment": "equipment",
-    "VIN/SerialNum": "vin",
+    "VIN SerialNum": "vin",
     "Reg NB": "registration",
     "Weight of equipment": "weight",
     "Weight measure": "weight_measure",
@@ -19,7 +19,6 @@ HEADER_MAP = {
     "Number of axes": "axles",
     "Emissions": "emissions",
     "Type of fuel": "fuel_type",
-
 }
 
 
@@ -39,6 +38,7 @@ OUTPUT_FIELDS = {
     "Errors": "errors",
     "Detected Manufacturer": "detected_manufacturer",
     "Manufacturer Country": "manufacturer_country",
+    "updated_vin": "detected_vin",
 }
 
 

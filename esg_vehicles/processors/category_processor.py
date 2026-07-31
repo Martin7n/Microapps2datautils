@@ -1,10 +1,67 @@
 from esg_vehicles.data_collections.data_id2 import LCV_VIN, HGV_VIN, CAR_VIN, MEDDUTYTRUCK
 from esg_vehicles.data_collections.categories_vehicles import CATEGORIES_BY_SOURCE, MAIN_CATEGORIES, \
-    VEHICLE_WEIGHT_CLASSES, V_W_CAT
+    VEHICLE_WEIGHT_CLASSES, V_W_CAT, TRAILER_KEYWORDS, VEHICLE_CATEGORY_MAPPING, LCV_KEYWORDS, CATEGORIES_BY_SOURCE_BG, \
+    HGV_KEYWORDS, CAR_KEYWORDS, CATEGORIES_BY_SOURCE_2, VEHICLE_TYPES_VIN, VIN_PREFIX_CATEGORY
 from esg_vehicles.processors.data_helpers import text_normalization, keyword_extract_list
 
 from esg_vehicles.models.main_class import ESGRecord
 from esg_vehicles.processors.weight_processor import weight_normalization
+
+
+def known_category(equipment_type):
+
+    for x in CATEGORIES_BY_SOURCE_2:
+        if x in equipment_type:
+            return CATEGORIES_BY_SOURCE_2[x]
+    for x in CATEGORIES_BY_SOURCE_BG:
+        if x in equipment_type:
+            return CATEGORIES_BY_SOURCE_BG[x]
+
+    return None
+
+
+def category_by_description(eq_description):
+    descr = eq_description.split(" ")
+
+    for keyword in descr:
+        if keyword in CATEGORIES_BY_SOURCE_BG:
+            return CATEGORIES_BY_SOURCE_BG[keyword]
+    for keyword in HGV_KEYWORDS:
+        if keyword in descr:
+            return CATEGORIES_BY_SOURCE_BG["влекач"]
+    for keyword in TRAILER_KEYWORDS:
+        if keyword in descr:
+            return CATEGORIES_BY_SOURCE_BG["ремарке"]
+    for keyword in LCV_KEYWORDS:
+        if keyword in eq_description:
+            return CATEGORIES_BY_SOURCE_BG["товарен"]
+    for keyword in CAR_KEYWORDS:
+        if keyword in descr:
+            return CATEGORIES_BY_SOURCE_BG["лек"]
+
+    return None
+
+def category_by_vin(eq_vin):
+    vin_partial = eq_vin[:7].upper()
+    return VIN_PREFIX_CATEGORY.get(eq_vin[:7])
+    # for k, v in VEHICLE_TYPES_VIN.items():
+    #     if vin_partial in v:
+    #         return CATEGORIES_BY_SOURCE_2[k]
+    # return None
+
+
+def category_extraction(eq_description,eq_brand,eq_model,eq_vin):
+    cat = category_by_description(eq_description)
+    if cat:
+        return cat
+
+    if len(eq_vin)>5:
+        cat = category_by_vin(eq_vin)
+        return cat
+
+    return None
+
+
 
 
 #1st stage
@@ -80,31 +137,31 @@ def category_check_3rd_stage():
 
 
 
-def check_by_partial_vin(safe_vin):
-    vin_partial = safe_vin[:7]
-    if vin_partial in LCV_VIN:
-        return "LgtComrclVeh"
-    if vin_partial in HGV_VIN:
-        return "HvyDutyTruck"
-    if vin_partial in CAR_VIN:
-        return "Car"
-    if vin_partial in MEDDUTYTRUCK:
-        return "MedDutyTruck"
-    return ""
-
-def check_by_category(text, vehicle_type):
-    category_text = text.split(" ")
-    category_text = [x.lower() for x in category_text]
-    if "Motorcycle" in vehicle_type:
-        return "Motorcycle"
-    if "trailer" in vehicle_type.lower():
-        return "Trailer"
-    if "СЂРµРјР°СЂРєРµ" in vehicle_type.lower():
-        return "Trailer"
-    if "semi truck" in vehicle_type.lower():
-        return "HvyDutyTruck"
-    #None or NoCat
-    return "NoCat"
+# def check_by_partial_vin(safe_vin):
+#     vin_partial = safe_vin[:7]
+#     if vin_partial in LCV_VIN:
+#         return "LgtComrclVeh"
+#     if vin_partial in HGV_VIN:
+#         return "HvyDutyTruck"
+#     if vin_partial in CAR_VIN:
+#         return "Car"
+#     if vin_partial in MEDDUTYTRUCK:
+#         return "MedDutyTruck"
+#     return ""
+#
+# def check_by_category(text, vehicle_type):
+#     category_text = text.split(" ")
+#     category_text = [x.lower() for x in category_text]
+#     if "Motorcycle" in vehicle_type:
+#         return "Motorcycle"
+#     if "trailer" in vehicle_type.lower():
+#         return "Trailer"
+#     if "СЂРµРјР°СЂРєРµ" in vehicle_type.lower():
+#         return "Trailer"
+#     if "semi truck" in vehicle_type.lower():
+#         return "HvyDutyTruck"
+#     #None or NoCat
+#     return "NoCat"
 
 if __name__ == '__main__':
     pass
