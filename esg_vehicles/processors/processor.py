@@ -48,7 +48,7 @@ def process_records(records:list[ESGRecord]):
         #     record.reg_category = VEHICLE_CATEGORY_MAPPING[record.asset_type.lower()]
 
         current_fuel_equipment = [record.fuel_type, record.equipment]
-        updated_fuel_cat = check_for_fuel_rev(current_fuel_equipment)
+        updated_fuel_cat = check_for_fuel_rev(current_fuel_equipment, record.vin)
         record.detected_fuel = updated_fuel_cat
 
         count += 1

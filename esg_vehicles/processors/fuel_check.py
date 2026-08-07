@@ -104,7 +104,7 @@ def check_for_fuel(check_for_fuel:list):
     return f"no fuel ide"
 
 
-def check_for_fuel_rev(check_for_fuel:list):
+def check_for_fuel_rev(check_for_fuel:list, vin):
 
     if check_for_fuel[0] in FUEL_ID:
         return FUEL_ID[check_for_fuel[0]]
@@ -121,6 +121,9 @@ def check_for_fuel_rev(check_for_fuel:list):
     if any(f" {keyword} " in full_text_string for keyword in DIESEL_KEYWORDS):
         return "diesel"
 
+    if vin is not None and len(vin)>5:
+        if vin in ELECTRIC_VINS:
+            return "ev"
         #
         #
         # if word in GAS_KEYWORDS:

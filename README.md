@@ -6,9 +6,9 @@ Todo:
 
     
     A) Brand - Models:
-        [] 1. extract B&M from brand and model fields (EqAlloc)
-        [] 2. extract B&M from brand and model fields (Equipment(description))
-        [] 3. extract matched B&M by description
+        [x] 1. extract B&M from brand and model fields (EqAlloc)
+        [x] 2. extract B&M from brand and model fields (Equipment(description))
+        [x] 3. extract matched B&M by description
         *** bonus: brand origin / country
         Result: B&M + modification data & id "tokens"
     B) Types/Categories: 
@@ -23,8 +23,8 @@ Todo:
     C) Fuels-Propulsion (FP)
         [x] 1. extract and map by EquipAlloc field /if exists
         []  2. match with Brand & Model(A) - only EV -> to result. 
-        []  3. extract by Equipment field(description)
-        []  4. extract by VIN
+        [x]  3. extract by Equipment field(description)
+        *[x]  4. extract by VIN  //data for Non EV to be added //
         [fail-safe] by 4.
         Result: fuel/propulsion 
     D) Emission 
